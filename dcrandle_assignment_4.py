@@ -35,3 +35,30 @@ elif choice == "C":
     stress_level += 15
 else:
     course_load = "Invalid" 
+# Decision 2: Choose a study focus
+study_options = ["Programming", "Math", "English", "History"]
+print("\nChoose a subject to focus on this semester:")
+print("Options: Programming, Math, English, History")
+
+subject_choice = input("Enter your chosen subject: ")
+
+# Validate user choice using membership operator
+if subject_choice in study_options:
+    print(f"You chose to focus on {subject_choice}.")
+
+    # Use logical operators to determine effects
+    if subject_choice in ["Programming", "Math"] and stress_level < 50:
+        current_gpa += 0.2
+        social_points -= 5
+        print("Focusing on a technical subject with low stress helped your GPA, but reduced social time.")
+    elif subject_choice in ["English", "History"] or stress_level > 60:
+        current_gpa += 0.1
+        social_points += 5
+        print("Focusing on a humanities subject or being highly stressed gave you a balanced outcome.")
+    else:
+        print("Your choice had a neutral effect this time.")
+elif subject_choice not in study_options:
+    print("That subject isn't available this semester.")
+    current_gpa -= 0.1
+    stress_level += 5
+    print("Choosing an unapproved subject caused confusion and stress.")
